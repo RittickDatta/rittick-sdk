@@ -3,10 +3,10 @@
 
 ## Roadmap baseline
 
-- Original master roadmap: **195 stories**; no ID revisions.
+- Original master roadmap: **195 stories**; no story ID revisions.
 - Completed: **1**
-- Verified (awaiting completion): **0**
-- In progress: **1**
+- Verified (awaiting completion): **1**
+- In progress: **0**
 - Blocked: **0**
 - Planned: **193**
 
@@ -14,93 +14,120 @@
 
 - Last completed story: **UI-001 — Initialize Repository and npm Project**
 - Current story: **UI-002 — Configure strict TypeScript**
-- UI-002 status: **In progress**
-- Next candidate after UI-002: **UI-003**, subject to dependency verification.
+- UI-002 status: **Verified; completion handoff pending**
+- Next candidate: **UI-003**, subject to original roadmap and dependency verification.
 - Repository: https://github.com/RittickDatta/rittick-sdk
-- Branch: `main`
+- Default branch: `main`
+- UI-002 feature branch: `2/rittick-sdk/ui/configure-strict-typescript`
 - Accepted ADRs: ADR-001 through ADR-011.
 
 ## UI-001 — Completed (2026-11-21)
 
-Implementation commit:
-`a95ff8987d78ce9bd5889f0a8ab1420bb14123b4`
+### Git evidence
 
-Documentation commits:
-- `db5daa7c592a42849906c9fd238258e09f7b18c9`
-- `9d72c82870b9f057dba42aedcffb9968ed9ab981`
-- `cd19591b84a16f3346199bf96d5d9ba484eed0fb`
+- Implementation: `a95ff8987d78ce9bd5889f0a8ab1420bb14123b4`
+- Documentation checkpoint: `db5daa7c592a42849906c9fd238258e09f7b18c9`
+- Completion evidence: `9d72c82870b9f057dba42aedcffb9968ed9ab981`
+- Final reconciliation: `cd19591b84a16f3346199bf96d5d9ba484eed0fb`
 
-Completion evidence:
+### Validation evidence
 
-- Private ESM npm workspace verified on GitHub.
-- `@rittick/ui` workspace placeholder verified.
-- Workspace validation script verified.
-- Node.js `v24.16.0`, npm `12.2.0`.
-- `npm ci` — PASS in user's local checkout.
+User's local checkout:
+
+- Node.js: `v24.16.0`
+- npm: `12.2.0`
+- `npm ci` — PASS.
 - `npm run check:workspace` — PASS.
-- Recovery documentation reconciled and pushed.
+- Output: `UI-001 workspace checks passed`.
 
-Final status: **Completed**.
+GitHub repository structure and commits were independently inspected.
+
+**Final status: Completed.**
 
 ## UI-002 — Configure strict TypeScript
 
-Status: **In progress**
+### Status
 
-### Scope
+**Verified — pending documentation commit and merge into main.**
 
-- Add TypeScript 5.x as a development dependency.
-- Establish strict root compiler defaults.
-- Add a UI-specific TypeScript configuration.
-- Add a minimal compilation sentinel until real UI source exists.
-- Add a root typecheck script.
-- Preserve existing workspace behavior.
+### Implementation evidence
 
-### Proposed files
+Branch:
+`2/rittick-sdk/ui/configure-strict-typescript`
 
-- `package.json` — modify.
-- `package-lock.json` — regenerate through npm.
-- `tsconfig.base.json` — create.
-- `packages/ui/tsconfig.json` — create.
-- `packages/ui/src/typecheck.ts` — create.
-- `PROGRESS.md` — update.
-- `DEVELOPMENT_PROGRESS.md` — update.
+Implementation commit:
+`8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8`
 
-### Validation
+Commit URL:
+https://github.com/RittickDatta/rittick-sdk/commit/8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8
 
-Required before completion:
+GitHub comparison confirmed the feature branch was one commit ahead of `main` and zero commits behind at inspection.
 
-- `npm ci`
-- `npm run check:workspace`
-- `npx tsc --version`
-- `npm run typecheck`
-- `git status --short`
+### Implemented changes
 
-Results: **Pending user execution and evidence**.
+- Added TypeScript `5.9.3` as an exact development dependency.
+- Added root `typecheck` script.
+- Added `tsconfig.base.json`.
+- Added `packages/ui/tsconfig.json`.
+- Added `packages/ui/src/typecheck.ts`.
+- Updated `package-lock.json`.
+- Updated both progress documents for the implementation checkpoint.
 
-Git implementation commit: **Not yet created or verified**.
+### Validation evidence
 
-GitHub CI: **Not run or verified**.
+User's Git Bash terminal on the UI-002 feature branch, 2026-11-21:
 
-### Completion gate
+- `git pull` — PASS; already up to date.
+- `npm ci` — PASS; added 2 packages.
+- `npm run check:workspace` — PASS.
+- `npm run typecheck` — PASS; no compiler errors reported.
+- `git status -sb` — clean working tree, tracking the feature branch.
+- `npx tsc --version` — TypeScript `5.9.3`, confirmed by the user.
 
-Do not mark UI-002 completed until:
+The initial mistyped command `pm ci` failed because it was not recognized; the correct `npm ci` command subsequently passed.
 
-1. Configuration files are present.
-2. TypeScript version satisfies ADR-001.
-3. Required checks pass.
-4. Changes are committed and pushed.
-5. Both progress documents reflect the observed evidence.
+The command `npm tsc --version` reported npm `12.2.0`, not the TypeScript version. The TypeScript version was subsequently confirmed separately.
+
+### Acceptance assessment
+
+- [x] UI-001 prerequisite completed.
+- [x] TypeScript 5.8+ within major version 5.
+- [x] Strict shared compiler configuration.
+- [x] UI-specific TypeScript configuration.
+- [x] Typecheck script.
+- [x] Typecheck input file.
+- [x] Dependency lockfile updated.
+- [x] Clean npm installation passed.
+- [x] Existing workspace check passed.
+- [x] Typecheck passed.
+- [x] Implementation committed and pushed.
+- [x] Implementation verified on GitHub.
+- [ ] Final verification documentation committed and pushed.
+- [ ] Feature branch merged into `main`.
+- [ ] Final merged revision verified.
+
+GitHub Actions CI was not independently verified.
+
+### Completion rule
+
+UI-002 remains in the intermediate **Verified** state until the documentation and merge handoff are complete.
+
+Do not increase the completed count until that gate is satisfied.
 
 ## Implementation boundaries
 
 Not yet implemented:
 
 - React component library.
-- Theme and visual-style system.
+- Visual-style and theme system.
+- CSS compilation.
 - Library bundling and exports.
-- Compiled CSS.
 - Storybook.
 - Authentication package.
-- CI and publishing.
+- CI and publishing workflows.
 
-See `DEVELOPMENT_PROGRESS.md` for the detailed recovery checkpoint.
+## Next story
+
+**UI-003** — verify its original roadmap title, requirements, and prerequisites before starting.
+
+See `DEVELOPMENT_PROGRESS.md` for detailed recovery instructions.
