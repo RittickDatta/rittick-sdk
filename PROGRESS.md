@@ -1,7 +1,14 @@
 Rittick roadmap progress
 Roadmap baseline
 - Original master roadmap: 195 stories; no story ID revisions.
-- Completed: 0; verified: 0; in progress: 1 (UI-001); blocked: 0; planned: 194.
+- Completed: 1; 
+  verified: 0; 
+  in progress: 0 (UI-001); 
+  blocked: 0; 
+  planned: 194.
+
+- Node version: v24.16.0
+- npm version: 12.2.0
 - Current story: UI-001 — Initialize repository and npm project.
 - Next candidate: UI-002 — Configure strict TypeScript, after UI-001 completion.
 UI-001 — repository integration checkpoint (2026-11-21)
