@@ -9,6 +9,7 @@
 - In progress: **0**
 - Blocked: **0**
 - Planned: **193**
+- Planned: **193**
 
 ## Current project status
 
@@ -18,7 +19,8 @@
 - Next eligible candidate: **UI-003**, subject to verification of its original roadmap definition and prerequisites.
 - Repository: https://github.com/RittickDatta/rittick-sdk
 - Default branch: `main`
-- Accepted architecture decisions: ADR-001 through ADR-011.
+- UI-002 feature branch: `2/rittick-sdk/ui/configure-strict-typescript`
+- Accepted ADRs: ADR-001 through ADR-011.
 
 ## UI-001 — Initialize Repository and npm Project
 
@@ -26,6 +28,7 @@
 
 **Completion date:** 2026-11-21
 
+### Git evidence
 ### Git evidence
 
 - Implementation commit: `a95ff8987d78ce9bd5889f0a8ab1420bb14123b4`
@@ -185,6 +188,7 @@ Not yet implemented:
 - Library bundling and public exports.
 - Storybook and component testing.
 - Authentication package.
+- CI and publishing workflows.
 - CI and publishing workflows.
 
 ## Next story

@@ -1,4 +1,3 @@
-
 # Rittick development recovery checkpoint
 
 ## Project baseline
@@ -10,6 +9,7 @@
 - Verified (awaiting completion): **0**
 - In progress: **0**
 - Blocked: **0**
+- Planned: **193**
 - Planned: **193**
 - Accepted ADRs: ADR-001 through ADR-011.
 - Last completed story: `UI-002`
@@ -90,6 +90,7 @@ Feature branch:
 `2/rittick-sdk/ui/configure-strict-typescript`
 
 Implementation commit:
+`8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8`
 `8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8`
 
 Implementation commit message:
@@ -188,31 +189,39 @@ Environment:
 - npm version observed: `12.2.0`.
 - TypeScript version confirmed by user: `5.9.3`.
 
-Commands and observed results:
+Commands and results:
 
 1. `git pull`
+   - PASS.
+   - Output: `Already up to date.`
    - PASS.
    - Output: `Already up to date.`
 
 2. `npm ci`
    - PASS.
    - Output: `added 2 packages in 1s`.
+3. `npm ci`
+   - PASS.
+   - Output: `added 2 packages in 1s`.
 
-3. `npm run check:workspace`
+4. `npm run check:workspace`
+5. `npm run check:workspace`
    - PASS.
    - Output: `UI-001 workspace checks passed`.
+   - Output: `UI-001 workspace checks passed`.
 
-4. `npm run typecheck`
+6. `npm run typecheck`
+7. `npm run typecheck`
    - PASS.
    - Executed:
      `tsc --project packages/ui/tsconfig.json --noEmit`
    - No compiler errors reported.
 
-5. `git status -sb`
+8. `git status -sb`
    - Clean working tree.
    - Feature branch tracking its remote counterpart.
 
-6. `npx tsc --version`
+9. `npx tsc --version`
    - TypeScript `5.9.3`, confirmed by the user.
    - Exact terminal output was not supplied as a screenshot.
 
@@ -276,7 +285,7 @@ No outstanding implementation or merge blocker.
 
 The final completion-documentation reconciliation is being recorded in this update.
 
-### Completion decision
+### Current lifecycle decision
 
 The required TypeScript configuration was implemented, validated locally, committed, and merged into `main`.
 
@@ -288,7 +297,7 @@ Total completed original stories: **2**.
 
 ---
 
-## Recovery instructions
+### Recovery instructions
 
 From an existing local checkout:
 
@@ -296,7 +305,7 @@ From an existing local checkout:
 git switch main
 git pull
 git status -sb
-git log -5 --oneline
+git log -3 --oneline
 
 npm ci
 npm run check:workspace
@@ -321,6 +330,7 @@ If local validation fails, record the failure and investigate before proceeding.
 ## Next eligible story
 
 **UI-003**
+**UI-003**
 
 Before starting:
 
@@ -335,7 +345,7 @@ Before starting:
 
 ## Mandatory checkpoint for every future story
 
-Every implementation story must record:
+For every story, record:
 
 - Story ID and lifecycle status.
 - Verified prerequisites.
@@ -360,4 +370,5 @@ Only completed original story IDs count toward the 195-story roadmap.
 
 Never invent commits, tests, results, or implemented files.
 
+Never store secrets or credentials.
 Never store secrets or credentials.
