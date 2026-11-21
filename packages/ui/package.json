@@ -1,0 +1,10 @@
+{
+  "name": "@rittick/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Rittick React UI design system \u2014 bootstrap only",
+  "engines": {
+    "node": "^22 || ^24"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.storybook-out/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.DS_Store

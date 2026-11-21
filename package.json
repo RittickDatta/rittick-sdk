@@ -1,0 +1,16 @@
+{
+  "name": "rittick-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "npm@10.9.2",
+  "engines": {
+    "node": "^22 || ^24"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "check:workspace": "node scripts/check-workspace.mjs"
+  }
+}
