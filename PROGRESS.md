@@ -3,81 +3,104 @@
 
 ## Roadmap baseline
 
-- Original master roadmap: **195 stories**; no story ID revisions.
+- Original master roadmap: **195 stories**; no ID revisions.
 - Completed: **1**
 - Verified (awaiting completion): **0**
-- In progress: **0**
+- In progress: **1**
 - Blocked: **0**
-- Planned: **194**
+- Planned: **193**
 
 ## Current project status
 
 - Last completed story: **UI-001 — Initialize Repository and npm Project**
-- UI-001 status: **Completed**
-- Next eligible story: **UI-002 — Configure strict TypeScript**
+- Current story: **UI-002 — Configure strict TypeScript**
+- UI-002 status: **In progress**
+- Next candidate after UI-002: **UI-003**, subject to dependency verification.
 - Repository: https://github.com/RittickDatta/rittick-sdk
-- Default branch: `main`
-- Accepted architecture decisions: ADR-001 through ADR-011.
+- Branch: `main`
+- Accepted ADRs: ADR-001 through ADR-011.
 
-## UI-001 — Completion record (2026-11-21)
+## UI-001 — Completed (2026-11-21)
 
-### Implementation
+Implementation commit:
+`a95ff8987d78ce9bd5889f0a8ab1420bb14123b4`
 
-- Initial implementation commit: `a95ff8987d78ce9bd5889f0a8ab1420bb14123b4`
-- Initial documentation checkpoint commit: `db5daa7c592a42849906c9fd238258e09f7b18c9`
-- Verification/completion documentation commit: `9d72c82870b9f057dba42aedcffb9968ed9ab981`
+Documentation commits:
+- `db5daa7c592a42849906c9fd238258e09f7b18c9`
+- `9d72c82870b9f057dba42aedcffb9968ed9ab981`
+- `cd19591b84a16f3346199bf96d5d9ba484eed0fb`
 
-The following were verified through the connected GitHub repository:
+Completion evidence:
 
-- Private ESM npm workspace root.
-- `packages/ui/package.json` reserving `@rittick/ui`.
-- `scripts/check-workspace.mjs`.
-- Root npm workspace configuration and lockfile.
-- `ARCHITECTURE.md`, `PROGRESS.md`, and `DEVELOPMENT_PROGRESS.md`.
-- Accepted architecture decision records.
+- Private ESM npm workspace verified on GitHub.
+- `@rittick/ui` workspace placeholder verified.
+- Workspace validation script verified.
+- Node.js `v24.16.0`, npm `12.2.0`.
+- `npm ci` — PASS in user's local checkout.
+- `npm run check:workspace` — PASS.
+- Recovery documentation reconciled and pushed.
 
-### Validation evidence
+Final status: **Completed**.
 
-Validation performed in the user's local repository checkout after `git pull` reported "Already up to date":
+## UI-002 — Configure strict TypeScript
 
-- Node.js: `v24.16.0`
-- npm: `12.2.0`
-- `npm ci` — **PASS** (added 1 package).
-- `npm run check:workspace` — **PASS**.
-- Validation output: `UI-001 workspace checks passed`.
+Status: **In progress**
 
-Evidence: terminal screenshot provided in the project conversation on 2026-11-21.
+### Scope
 
-Earlier isolated starter-scaffold validation also passed on Node.js v22.16.0 and npm 10.9.2.
+- Add TypeScript 5.x as a development dependency.
+- Establish strict root compiler defaults.
+- Add a UI-specific TypeScript configuration.
+- Add a minimal compilation sentinel until real UI source exists.
+- Add a root typecheck script.
+- Preserve existing workspace behavior.
 
-GitHub Actions CI was not verified and is not claimed as part of UI-001.
+### Proposed files
 
-### Completion assessment
+- `package.json` — modify.
+- `package-lock.json` — regenerate through npm.
+- `tsconfig.base.json` — create.
+- `packages/ui/tsconfig.json` — create.
+- `packages/ui/src/typecheck.ts` — create.
+- `PROGRESS.md` — update.
+- `DEVELOPMENT_PROGRESS.md` — update.
 
-**UI-001: Completed.**
+### Validation
 
-Implementation, repository integration, local validation, and completion evidence have been established. This documentation reconciliation records the final status consistently.
+Required before completion:
+
+- `npm ci`
+- `npm run check:workspace`
+- `npx tsc --version`
+- `npm run typecheck`
+- `git status --short`
+
+Results: **Pending user execution and evidence**.
+
+Git implementation commit: **Not yet created or verified**.
+
+GitHub CI: **Not run or verified**.
+
+### Completion gate
+
+Do not mark UI-002 completed until:
+
+1. Configuration files are present.
+2. TypeScript version satisfies ADR-001.
+3. Required checks pass.
+4. Changes are committed and pushed.
+5. Both progress documents reflect the observed evidence.
 
 ## Implementation boundaries
 
-UI-001 provides repository initialization only.
-
 Not yet implemented:
 
-- Strict TypeScript configuration.
-- React UI components and themes.
-- Library builds and package exports.
+- React component library.
+- Theme and visual-style system.
+- Library bundling and exports.
 - Compiled CSS.
 - Storybook.
 - Authentication package.
-- CI and release/publishing workflows.
+- CI and publishing.
 
-These remain subject to their scheduled stories.
-
-## Next story
-
-**UI-002 — Configure strict TypeScript**
-
-Before implementation, verify prerequisites and inspect the current repository state.
-
-See `DEVELOPMENT_PROGRESS.md` for detailed recovery information.
+See `DEVELOPMENT_PROGRESS.md` for the detailed recovery checkpoint.
