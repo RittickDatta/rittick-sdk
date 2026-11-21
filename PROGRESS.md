@@ -5,79 +5,129 @@
 
 - Original master roadmap: **195 stories**; no story ID revisions.
 - Completed: **1**
-- Verified (awaiting completion): **0**
+- Verified (awaiting completion): **1**
 - In progress: **0**
 - Blocked: **0**
-- Planned: **194**
+- Planned: **193**
 
 ## Current project status
 
 - Last completed story: **UI-001 — Initialize Repository and npm Project**
-- UI-001 status: **Completed**
-- Next eligible story: **UI-002 — Configure strict TypeScript**
+- Current story: **UI-002 — Configure strict TypeScript**
+- UI-002 status: **Verified; completion handoff pending**
+- Next candidate: **UI-003**, subject to original roadmap and dependency verification.
 - Repository: https://github.com/RittickDatta/rittick-sdk
 - Default branch: `main`
-- Accepted architecture decisions: ADR-001 through ADR-011.
+- UI-002 feature branch: `2/rittick-sdk/ui/configure-strict-typescript`
+- Accepted ADRs: ADR-001 through ADR-011.
 
-## UI-001 — Completion record (2026-11-21)
+## UI-001 — Completed (2026-11-21)
 
-### Implementation
+### Git evidence
 
-- Initial implementation commit: `a95ff8987d78ce9bd5889f0a8ab1420bb14123b4`
-- Initial documentation checkpoint commit: `db5daa7c592a42849906c9fd238258e09f7b18c9`
-- Verification/completion documentation commit: `9d72c82870b9f057dba42aedcffb9968ed9ab981`
-
-The following were verified through the connected GitHub repository:
-
-- Private ESM npm workspace root.
-- `packages/ui/package.json` reserving `@rittick/ui`.
-- `scripts/check-workspace.mjs`.
-- Root npm workspace configuration and lockfile.
-- `ARCHITECTURE.md`, `PROGRESS.md`, and `DEVELOPMENT_PROGRESS.md`.
-- Accepted architecture decision records.
+- Implementation: `a95ff8987d78ce9bd5889f0a8ab1420bb14123b4`
+- Documentation checkpoint: `db5daa7c592a42849906c9fd238258e09f7b18c9`
+- Completion evidence: `9d72c82870b9f057dba42aedcffb9968ed9ab981`
+- Final reconciliation: `cd19591b84a16f3346199bf96d5d9ba484eed0fb`
 
 ### Validation evidence
 
-Validation performed in the user's local repository checkout after `git pull` reported "Already up to date":
+User's local checkout:
 
 - Node.js: `v24.16.0`
 - npm: `12.2.0`
-- `npm ci` — **PASS** (added 1 package).
-- `npm run check:workspace` — **PASS**.
-- Validation output: `UI-001 workspace checks passed`.
+- `npm ci` — PASS.
+- `npm run check:workspace` — PASS.
+- Output: `UI-001 workspace checks passed`.
 
-Evidence: terminal screenshot provided in the project conversation on 2026-11-21.
+GitHub repository structure and commits were independently inspected.
 
-Earlier isolated starter-scaffold validation also passed on Node.js v22.16.0 and npm 10.9.2.
+**Final status: Completed.**
 
-GitHub Actions CI was not verified and is not claimed as part of UI-001.
+## UI-002 — Configure strict TypeScript
 
-### Completion assessment
+### Status
 
-**UI-001: Completed.**
+**Verified — pending documentation commit and merge into main.**
 
-Implementation, repository integration, local validation, and completion evidence have been established. This documentation reconciliation records the final status consistently.
+### Implementation evidence
+
+Branch:
+`2/rittick-sdk/ui/configure-strict-typescript`
+
+Implementation commit:
+`8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8`
+
+Commit URL:
+https://github.com/RittickDatta/rittick-sdk/commit/8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8
+
+GitHub comparison confirmed the feature branch was one commit ahead of `main` and zero commits behind at inspection.
+
+### Implemented changes
+
+- Added TypeScript `5.9.3` as an exact development dependency.
+- Added root `typecheck` script.
+- Added `tsconfig.base.json`.
+- Added `packages/ui/tsconfig.json`.
+- Added `packages/ui/src/typecheck.ts`.
+- Updated `package-lock.json`.
+- Updated both progress documents for the implementation checkpoint.
+
+### Validation evidence
+
+User's Git Bash terminal on the UI-002 feature branch, 2026-11-21:
+
+- `git pull` — PASS; already up to date.
+- `npm ci` — PASS; added 2 packages.
+- `npm run check:workspace` — PASS.
+- `npm run typecheck` — PASS; no compiler errors reported.
+- `git status -sb` — clean working tree, tracking the feature branch.
+- `npx tsc --version` — TypeScript `5.9.3`, confirmed by the user.
+
+The initial mistyped command `pm ci` failed because it was not recognized; the correct `npm ci` command subsequently passed.
+
+The command `npm tsc --version` reported npm `12.2.0`, not the TypeScript version. The TypeScript version was subsequently confirmed separately.
+
+### Acceptance assessment
+
+- [x] UI-001 prerequisite completed.
+- [x] TypeScript 5.8+ within major version 5.
+- [x] Strict shared compiler configuration.
+- [x] UI-specific TypeScript configuration.
+- [x] Typecheck script.
+- [x] Typecheck input file.
+- [x] Dependency lockfile updated.
+- [x] Clean npm installation passed.
+- [x] Existing workspace check passed.
+- [x] Typecheck passed.
+- [x] Implementation committed and pushed.
+- [x] Implementation verified on GitHub.
+- [ ] Final verification documentation committed and pushed.
+- [ ] Feature branch merged into `main`.
+- [ ] Final merged revision verified.
+
+GitHub Actions CI was not independently verified.
+
+### Completion rule
+
+UI-002 remains in the intermediate **Verified** state until the documentation and merge handoff are complete.
+
+Do not increase the completed count until that gate is satisfied.
 
 ## Implementation boundaries
 
-UI-001 provides repository initialization only.
-
 Not yet implemented:
 
-- Strict TypeScript configuration.
-- React UI components and themes.
-- Library builds and package exports.
-- Compiled CSS.
+- React component library.
+- Visual-style and theme system.
+- CSS compilation.
+- Library bundling and exports.
 - Storybook.
 - Authentication package.
-- CI and release/publishing workflows.
-
-These remain subject to their scheduled stories.
+- CI and publishing workflows.
 
 ## Next story
 
-**UI-002 — Configure strict TypeScript**
+**UI-003** — verify its original roadmap title, requirements, and prerequisites before starting.
 
-Before implementation, verify prerequisites and inspect the current repository state.
-
-See `DEVELOPMENT_PROGRESS.md` for detailed recovery information.
+See `DEVELOPMENT_PROGRESS.md` for detailed recovery instructions.
