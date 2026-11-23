@@ -3,21 +3,21 @@
 ## Roadmap baseline
 
 - Original master roadmap: **195 stories**; no story ID revisions.
-- Completed: **3**
+- Completed: **4**
 - Verified (awaiting completion): **0**
 - In progress: **0**
 - Blocked: **0**
-- Planned: **192**
-- Overall completion: **1.54%**
+- Planned: **191**
+- Overall completion: **2.05%**
 
 ## Current project status
 
 - Repository: https://github.com/RittickDatta/rittick-sdk
 - Default branch: `main`
 - Accepted ADRs: ADR-001 through ADR-011.
-- Last completed story: **UI-003 — Configure library build and package exports**
+- Last completed story: **UI-004 — Configure ESLint and Prettier**
 - Current active story: None.
-- Next eligible story: **UI-004 — Configure ESLint and Prettier**
+- Next eligible story: **UI-005 — Configure Vitest and React Testing Library**
 
 ## Story summary
 
@@ -26,7 +26,7 @@
 | UI-001 | Initialize repository and npm project       | Completed |
 | UI-002 | Configure strict TypeScript                 | Completed |
 | UI-003 | Configure library build and package exports | Completed |
-| UI-004 | Configure ESLint and Prettier               | Planned   |
+| UI-004 | Configure ESLint and Prettier               | Completed |
 | UI-005 | Configure Vitest and React Testing Library  | Planned   |
 
 ---
@@ -117,8 +117,6 @@ User's Git Bash terminal on 2026-11-21:
 - `git status -sb` — clean working tree.
 - TypeScript version `5.9.3` confirmed by user.
 
-Implementation, verification documentation, and merge were confirmed through GitHub.
-
 ### Completion assessment
 
 - [x] UI-001 prerequisite completed.
@@ -130,7 +128,7 @@ Implementation, verification documentation, and merge were confirmed through Git
 - [x] Implementation committed and pushed.
 - [x] GitHub implementation verified.
 - [x] Verification documentation committed.
-- [x] Pull request merged into `main`.
+- [x] Pull request merged into main.
 - [x] Completion documentation reconciled.
 - [x] Subsequent merge conflict resolved and pushed.
 
@@ -163,13 +161,10 @@ GitHub Actions CI was not independently verified.
 - Validated HEAD: `409f977e053832ef03dfa0a11fb55d0ee22661f2`
 - Verification documentation: `3723c17b284ac3e455a7136f1361e98dc3e0152f`
 - Merge commit: `ec2b5dd90cef21358c37468f5aea865e0ab705a2`
+- Completion documentation: `deb40ab9fe76c377e0920259884bf71fb80db7b5`
 - Pull request: https://github.com/RittickDatta/rittick-sdk/pull/2
 - PR status: Merged.
-- Merge timestamp: 2026-11-23T06:12:28Z.
-
-GitHub confirmed that both implementation commits and the verification documentation commit were incorporated into main.
-
-Before verification documentation, the feature branch was two commits ahead of main, zero commits behind, with nine changed files.
+- Merge timestamp: `2026-11-23T06:12:28Z`.
 
 ### Implemented scope
 
@@ -268,11 +263,10 @@ The isolated consumer installation reported zero known vulnerabilities at the ti
 - [x] Working tree clean at validation.
 - [x] Implementation committed and pushed.
 - [x] GitHub implementation verified.
-- [x] Pull request created.
 - [x] Verification documentation committed and pushed.
 - [x] Pull request merged into main.
 - [x] Merge commit and merged documentation verified.
-- [x] Final completion documentation prepared.
+- [x] Completion documentation committed.
 
 ### Test limitations
 
@@ -288,15 +282,177 @@ No package is approved for publication.
 
 ### Completion assessment
 
-All current story-level technical acceptance checks passed.
-
 PR #2 was merged successfully into main on 2026-11-23.
 
 The UI-002 documentation duplicates were removed in the UI-003 verification checkpoint.
 
-The final completion-documentation commit SHA will be recorded in a subsequent checkpoint after this update is committed.
-
 **Final lifecycle status: Completed.**
+
+---
+
+## UI-004 — Configure ESLint and Prettier
+
+**Status: Completed**
+
+**Verification date:** 2026-11-23
+
+**Completion date:** 2026-11-23
+
+### Git evidence
+
+- Feature branch: `4/rittick-sdk/ui/configure-eslint-and-prettier`
+- Starting main revision: `deb40ab9fe76c377e0920259884bf71fb80db7b5`
+- Initial implementation: `71cfecc7dc79f6682a289e9672a06c8c14ebecf9`
+- ESLint 10 migration: `f9087a30a4adcd73bc7a0bcc0975b63db7ff988e`
+- Final implementation: `2366e5bd7f2f3b909c27e42d4b05a2fb0c732fde`
+- Merge commit: `82f8aeaefca2c577c862150bd09c731e5ce93a2f`
+- Pull request: https://github.com/RittickDatta/rittick-sdk/pull/3
+- PR status: Merged.
+- Merge timestamp: `2026-11-23T07:31:51Z`.
+
+GitHub confirmed that all three implementation commits were incorporated into main.
+
+At verification, the feature branch was zero commits ahead and one commit behind main.
+
+### Implemented scope
+
+- ESLint 10 flat configuration.
+- JavaScript and TypeScript linting.
+- React JSX and TSX validation.
+- React Hooks validation across UI source files.
+- Explicit any rejection.
+- Consistent TypeScript type imports.
+- Zero-warning lint validation.
+- Prettier 3 formatting.
+- ESLint and Prettier compatibility.
+- Shared EditorConfig conventions.
+- Generated-artifact exclusions.
+- Repository-level Git line-ending policy.
+- Exact development dependency versions.
+
+### Dependency versions
+
+| Dependency                  | Version |
+| --------------------------- | ------- |
+| eslint                      | 10.15.0 |
+| @eslint/js                  | 10.0.1  |
+| @eslint-react/eslint-plugin | 5.30.6  |
+| eslint-plugin-react-hooks   | 7.1.1   |
+| eslint-config-prettier      | 10.1.8  |
+| typescript-eslint           | 8.73.0  |
+| prettier                    | 3.10.1  |
+| globals                     | 16.5.0  |
+| typescript                  | 5.9.3   |
+
+The initial ESLint 9 implementation was replaced after npm reported that the version was no longer supported.
+
+The incompatible legacy React plugin was removed.
+
+Duplicate React Hooks ordering diagnostics were eliminated while retaining the official React Hooks rule.
+
+### Validation evidence
+
+User's local Windows Git Bash terminal on 2026-11-23:
+
+- Node.js: `v24.16.0`.
+- npm: `12.2.0`.
+- TypeScript: `5.9.3`.
+- ESLint: `10.15.0`.
+- Prettier: `3.10.1`.
+- `npm ci` — PASS; added 162 packages after migration.
+- `npm ls --depth=0` — dependency tree inspected.
+- `npm run lint:fix` — no errors shown.
+- `npm run format` — PASS.
+- `npm run lint` — PASS.
+- `npm run format:check` — PASS.
+- `npm run check:workspace` — PASS.
+- `npm run typecheck` — PASS.
+- `npm run build` — PASS.
+- `npm run check:package` — PASS before final Hooks deduplication.
+- `npm pack --workspace=@rittick/ui` — PASS after deduplication.
+- Tarball inspection — PASS.
+
+### Behavior tests
+
+| Test                               | Observed result                                    |
+| ---------------------------------- | -------------------------------------------------- |
+| Explicit any                       | Rejected; exit code 1                              |
+| Conditional React Hook             | Rejected; exit code 1                              |
+| Missing React list key             | Rejected; exit code 1                              |
+| Incorrect formatting               | Rejected; exit code 1                              |
+| Formatting correction              | Expected formatted output                          |
+| Valid React component              | Accepted; exit code 0                              |
+| Duplicate Hooks diagnostic removal | One Hooks error and one state warning; exit code 1 |
+
+### Package artifact
+
+- Name: `@rittick/ui`
+- Version: `0.0.0`
+- Packed size: 664 bytes.
+- Unpacked size: 961 bytes.
+- Total files: 4.
+- SHA-1: `2a34411f026837344197cf8fc33b00afb912fd8b`
+
+The package contains only the expected manifest and three distribution files.
+
+No development tooling files were included.
+
+### ADR review
+
+The pull request changed formatting in:
+
+- `ADR-002-user-identity-proposed.md`
+- `ADR-003-session-security.md`
+- `ADR-007-captcha-abuse-protection.md`
+
+GitHub diff inspection confirmed that the changes were formatting-only.
+
+No accepted architectural decisions were amended.
+
+### Acceptance checklist
+
+- [x] UI-001 through UI-003 prerequisites completed.
+- [x] ESLint 10 configured.
+- [x] Unsupported ESLint 9 replaced.
+- [x] Compatible React linting plugin installed.
+- [x] React Hooks linting configured.
+- [x] Prettier configured.
+- [x] Clean dependency installation passed.
+- [x] Lint and formatting validation passed.
+- [x] Negative and positive behavior tests passed.
+- [x] Duplicate Hooks diagnostic removed.
+- [x] Previous story regression checks passed.
+- [x] Final package generated and inspected.
+- [x] Repository line-ending policy committed.
+- [x] ADR changes reviewed.
+- [x] Implementation committed and pushed.
+- [x] GitHub implementation verified.
+- [x] Pull request merged into main.
+
+### Verification limitations
+
+- Node.js 22 execution has not been verified.
+- ESLint 10 requires Node.js 22.13.0 or later within the Node.js 22 development line.
+- The published package runtime compatibility policy remains unchanged.
+- Local npm version differs from the declared npm baseline.
+- Independent GitHub Actions CI success is not established.
+- GitHub combined commit status reported zero individual statuses.
+- Final local Git attribute and whitespace-check outputs were not supplied.
+- The final package-check script output after Hooks deduplication was cropped.
+- Local validation was not explicitly tied to the final commit using a captured HEAD command.
+- No independent post-merge test execution is claimed.
+
+### Completion assessment
+
+The story's implementation and merge have been verified.
+
+The supplied local evidence establishes the intended linting and formatting behavior.
+
+No known functional blocker remains.
+
+The completion documentation SHA will be recorded in a subsequent checkpoint.
+
+**Final lifecycle status: Completed upon publication of this checkpoint.**
 
 ---
 
@@ -314,10 +470,14 @@ The completed foundation provides:
 - Declaration and source map generation.
 - Package validation.
 - Packed ESM consumer smoke test.
+- ESLint 10 code quality tooling.
+- React and React Hooks linting.
+- Prettier formatting.
+- EditorConfig conventions.
+- Git line-ending normalization policy.
 
 Not yet implemented:
 
-- ESLint and Prettier.
 - Vitest and React Testing Library.
 - React UI components.
 - Theme tokens and six visual styles.
@@ -329,8 +489,8 @@ Not yet implemented:
 
 ## Next story
 
-**UI-004 — Configure ESLint and Prettier**
+**UI-005 — Configure Vitest and React Testing Library**
 
-Begin from the latest main after the UI-003 completion documentation is committed.
+Begin from the latest main after the UI-004 completion documentation is committed and verified.
 
 See `DEVELOPMENT_PROGRESS.md` for detailed recovery instructions.

@@ -147,57 +147,60 @@ Full React, SSR, browser, TypeScript consumer, and
 Node.js compatibility-matrix validation remain
 mandatory future release gates.
 
-## UI-004 implementation checkpoint
+### Code quality tooling — UI-004
 
-Status: Implementation pending verification.
+Status: Implementation verified and merged.
 
-### Code quality tooling
+Completion documentation is reconciled through this
+checkpoint.
 
-UI-004 introduces shared repository-level development
-tooling for JavaScript, TypeScript, and React source code.
+Merged into main on 2026-11-23 through pull request #3.
 
-Configuration files:
+Final implementation commit:
+
+`2366e5bd7f2f3b909c27e42d4b05a2fb0c732fde`
+
+Merge commit:
+
+`82f8aeaefca2c577c862150bd09c731e5ce93a2f`
+
+#### Configuration files
 
 - `eslint.config.mjs`
 - `.prettierrc.json`
 - `.prettierignore`
 - `.editorconfig`
+- `.gitattributes`
 
-Tooling architecture:
+#### Linting architecture
+
+UI-004 establishes shared repository-level development
+tooling for JavaScript, TypeScript, and React source code.
+
+Implemented capabilities:
 
 - ESLint 10 flat configuration using native `defineConfig`.
 - Recommended JavaScript linting rules.
 - Recommended TypeScript linting rules.
+- Explicit any rejection.
+- Consistent TypeScript type imports.
+- Unused variable validation.
 - React validation using `@eslint-react/eslint-plugin`.
-- React Hooks validation using `eslint-plugin-react-hooks`.
 - Separate JavaScript JSX and TypeScript JSX presets.
 - React Hooks validation across UI source files.
 - Explicit Node.js globals for development tooling.
 - Browser globals scoped to UI source files.
-- Prettier 3 formatting.
-- ESLint and Prettier compatibility configuration.
 - Generated-artifact exclusions.
 - Exact development dependency versions.
-- Shared editor formatting conventions.
-- Repository-level Git line-ending normalization.
+- ESLint and Prettier compatibility configuration.
 
-The ESLint development toolchain requires Node.js
-22.13.0 or later within the Node.js 22 release line,
-or Node.js 24.x under the approved SDK runtime policy.
+The official `eslint-plugin-react-hooks` plugin is
+responsible for Hooks ordering and dependency validation.
 
-The initial ESLint 9 implementation passed functional
-validation but was replaced before story completion
-because ESLint 9 was no longer supported.
+The duplicate `@eslint-react/rules-of-hooks` rule is
+disabled for UI JSX and TSX files.
 
-Type-aware ESLint rules are not enabled at this stage.
-
-Strict TypeScript compilation remains a separate
-mandatory validation step.
-
-The published package runtime compatibility contract
-remains unchanged.
-
-Linting and formatting are separate responsibilities.
+Other React plugin diagnostics remain enabled.
 
 Type-aware ESLint rules are not enabled at this stage.
 
@@ -207,20 +210,66 @@ mandatory validation step.
 Future authentication packages will receive their own
 environment-specific linting configuration.
 
-### Formatting conventions
+#### Dependency baseline
+
+| Development dependency      | Version |
+| --------------------------- | ------- |
+| eslint                      | 10.15.0 |
+| @eslint/js                  | 10.0.1  |
+| @eslint-react/eslint-plugin | 5.30.6  |
+| eslint-plugin-react-hooks   | 7.1.1   |
+| eslint-config-prettier      | 10.1.8  |
+| typescript-eslint           | 8.73.0  |
+| prettier                    | 3.10.1  |
+| globals                     | 16.5.0  |
+| typescript                  | 5.9.3   |
+
+The initial ESLint 9 implementation passed functional
+validation but was replaced after npm reported that
+the version was unsupported.
+
+The legacy React linting plugin was replaced because
+its declared peer dependency range did not include
+ESLint 10.
+
+The development tooling remains a root-level concern
+and does not introduce new public SDK APIs.
+
+#### Formatting architecture
+
+Linting and formatting are separate responsibilities.
+
+Prettier controls source formatting.
+
+Formatting conventions:
 
 - Two-space indentation.
 - Double quotes.
 - Semicolons.
 - Trailing commas where supported.
-- Maximum preferred line width of 100 characters.
+- Preferred line width of 100 characters.
 - LF line endings.
 - Parenthesized arrow function parameters.
 
 Generated artifacts, npm lockfiles, and environment
 files are excluded from Prettier formatting.
 
-### Development commands
+EditorConfig provides shared editor conventions.
+
+#### Repository line-ending policy
+
+The `.gitattributes` configuration establishes:
+
+- Automatic text detection.
+- LF line endings for text files.
+- CRLF exceptions for Windows batch and command scripts.
+- Binary classification for selected binary asset types.
+
+This policy reduces cross-platform line-ending
+differences but does not eliminate semantic merge
+conflicts.
+
+#### Development commands
 
 - `npm run lint`
 - `npm run lint:fix`
@@ -229,20 +278,86 @@ files are excluded from Prettier formatting.
 
 Lint validation treats warnings as failures.
 
-The new tooling remains a root-level development
-dependency and does not change the UI runtime API.
+Formatting validation is separate from automatic
+formatting correction.
 
-Implementation and validation evidence will be recorded
-in `DEVELOPMENT_PROGRESS.md`.
+#### Validation
+
+The final ESLint 10 toolchain passed local installation,
+linting, and formatting validation.
+
+Behavior tests confirmed:
+
+- Explicit any rejection.
+- Conditional React Hook rejection.
+- Missing React list key rejection.
+- Incorrect formatting rejection.
+- Automatic formatting correction.
+- Valid React component acceptance.
+- Duplicate Hooks diagnostic removal.
+
+Previous workspace, TypeScript, build, and package
+validation checks passed during the migration.
+
+The final tarball retained the four expected
+distribution files.
+
+No development tooling configuration was included in
+the observed package artifact.
+
+GitHub source inspection confirmed the final ESLint
+configuration, pinned development dependencies, and
+repository line-ending policy.
+
+Independent CI execution and Node.js 22 validation
+remain unverified.
+
+See `DEVELOPMENT_PROGRESS.md` for detailed evidence
+and verification limitations.
+
+#### ADR integrity
+
+Formatting changes to ADR-002 proposed, ADR-003, and
+ADR-007 were reviewed through GitHub pull request
+patches.
+
+No architectural decision text was changed.
+
+No accepted ADR amendment was required.
 
 ## Toolchain baseline
 
-- Supported Node.js versions: 22.x and 24.x.
-- Declared npm package manager: 10.9.2.
+### Package runtime compatibility
+
+- Supported Node.js release lines: 22.x and 24.x.
 - TypeScript development version: 5.9.3.
 - React and ReactDOM peer range: 19.x.
+- ESM-only package distribution.
 
-The local UI-003 validation environment used npm 12.2.0.
+The approved package runtime compatibility policy
+remains unchanged.
+
+### Development environment
+
+The ESLint 10 development toolchain requires:
+
+- Node.js 22.13.0 or later within the Node.js 22 line.
+- Or Node.js 24.x under the approved SDK policy.
+
+The root manifest currently declares `^22 || ^24`.
+
+The stricter development minimum is documented here
+but is not yet enforced by that root engine range.
+
+Node.js 22 execution compatibility must be validated
+when establishing the CI compatibility matrix.
+
+Declared npm package manager:
+
+`npm@10.9.2`
+
+The local UI-003 and UI-004 validation environments
+used npm 12.2.0.
 
 The declared npm baseline remains unchanged.
 
@@ -257,6 +372,7 @@ the approved toolchain.
 - Storybook.
 - Automated accessibility testing.
 - Browser and visual regression testing.
+- Type-aware ESLint rules where appropriate.
 
 ### UI package
 
