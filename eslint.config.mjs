@@ -1,11 +1,12 @@
 import js from "@eslint/js";
+import { defineConfig } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import react from "eslint-plugin-react";
+import eslintReact from "@eslint-react/eslint-plugin";
 import reactHooks from "eslint-plugin-react-hooks";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 
-export default tseslint.config(
+export default defineConfig(
   {
     name: "rittick/global-ignores",
     ignores: [
@@ -29,7 +30,7 @@ export default tseslint.config(
   {
     name: "rittick/typescript",
     files: ["**/*.{ts,tsx,mts,cts}"],
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [js.configs.recommended, tseslint.configs.recommended],
     rules: {
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": "error",
@@ -64,12 +65,9 @@ export default tseslint.config(
   },
 
   {
-    name: "rittick/react",
-    files: ["packages/ui/src/**/*.{jsx,tsx}"],
-    plugins: {
-      react,
-      "react-hooks": reactHooks,
-    },
+    name: "rittick/react-javascript",
+    files: ["packages/ui/src/**/*.jsx"],
+    extends: [eslintReact.configs.recommended],
     languageOptions: {
       parserOptions: {
         ecmaFeatures: {
@@ -77,19 +75,31 @@ export default tseslint.config(
         },
       },
     },
-    settings: {
-      react: {
-        version: "detect",
-      },
+  },
+
+  {
+    name: "rittick/react-typescript",
+    files: ["packages/ui/src/**/*.tsx"],
+    extends: [eslintReact.configs["recommended-typescript"]],
+  },
+
+  {
+    name: "rittick/react-hooks",
+    files: ["packages/ui/src/**/*.{js,jsx,ts,tsx}"],
+    plugins: {
+      "react-hooks": reactHooks,
     },
     rules: {
-      ...react.configs.recommended.rules,
-      ...react.configs["jsx-runtime"].rules,
-
-      "react/prop-types": "off",
-
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
+    },
+  },
+
+  {
+    name: "rittick/react-hooks-deduplication",
+    files: ["packages/ui/src/**/*.{jsx,tsx}"],
+    rules: {
+      "@eslint-react/rules-of-hooks": "off",
     },
   },
 

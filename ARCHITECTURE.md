@@ -165,10 +165,13 @@ Configuration files:
 
 Tooling architecture:
 
-- ESLint 9 flat configuration.
+- ESLint 10 flat configuration using native `defineConfig`.
 - Recommended JavaScript linting rules.
 - Recommended TypeScript linting rules.
-- React JSX and Hooks validation.
+- React validation using `@eslint-react/eslint-plugin`.
+- React Hooks validation using `eslint-plugin-react-hooks`.
+- Separate JavaScript JSX and TypeScript JSX presets.
+- React Hooks validation across UI source files.
 - Explicit Node.js globals for development tooling.
 - Browser globals scoped to UI source files.
 - Prettier 3 formatting.
@@ -176,6 +179,23 @@ Tooling architecture:
 - Generated-artifact exclusions.
 - Exact development dependency versions.
 - Shared editor formatting conventions.
+- Repository-level Git line-ending normalization.
+
+The ESLint development toolchain requires Node.js
+22.13.0 or later within the Node.js 22 release line,
+or Node.js 24.x under the approved SDK runtime policy.
+
+The initial ESLint 9 implementation passed functional
+validation but was replaced before story completion
+because ESLint 9 was no longer supported.
+
+Type-aware ESLint rules are not enabled at this stage.
+
+Strict TypeScript compilation remains a separate
+mandatory validation step.
+
+The published package runtime compatibility contract
+remains unchanged.
 
 Linting and formatting are separate responsibilities.
 
