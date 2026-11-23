@@ -4,22 +4,21 @@
 ## Roadmap baseline
 
 - Original master roadmap: **195 stories**; no story ID revisions.
-- Completed: **2**
-- Verified (awaiting completion): **1**
+- Completed: **3**
+- Verified (awaiting completion): **0**
 - In progress: **0**
 - Blocked: **0**
 - Planned: **192**
-- Overall completion: **1.03%**
+- Overall completion: **1.54%**
 
 ## Current project status
 
 - Repository: https://github.com/RittickDatta/rittick-sdk
 - Default branch: `main`
 - Accepted ADRs: ADR-001 through ADR-011.
-- Last completed story: **UI-002 — Configure strict TypeScript**
-- Current story: **UI-003 — Configure library build and package exports**
-- Current story status: **Verified — awaiting merge**
-- Next candidate: **UI-004 — Configure ESLint and Prettier**
+- Last completed story: **UI-003 — Configure library build and package exports**
+- Current active story: None.
+- Next eligible story: **UI-004 — Configure ESLint and Prettier**
 
 ## Story summary
 
@@ -27,7 +26,7 @@
 |---|---|---|
 | UI-001 | Initialize repository and npm project | Completed |
 | UI-002 | Configure strict TypeScript | Completed |
-| UI-003 | Configure library build and package exports | Verified |
+| UI-003 | Configure library build and package exports | Completed |
 | UI-004 | Configure ESLint and Prettier | Planned |
 | UI-005 | Configure Vitest and React Testing Library | Planned |
 
@@ -150,9 +149,11 @@ GitHub Actions CI was not independently verified.
 
 ## UI-003 — Configure library build and package exports
 
-**Status: Verified — awaiting merge**
+**Status: Completed**
 
 **Verification date:** 2026-11-23
+
+**Completion date:** 2026-11-23
 
 ### Git evidence
 
@@ -161,10 +162,15 @@ GitHub Actions CI was not independently verified.
 - Implementation commit: `68c5440174edebc28bedc04d1ce27d203240b4bd`
 - Implementation Part 2: `409f977e053832ef03dfa0a11fb55d0ee22661f2`
 - Validated HEAD: `409f977e053832ef03dfa0a11fb55d0ee22661f2`
+- Verification documentation: `3723c17b284ac3e455a7136f1361e98dc3e0152f`
+- Merge commit: `ec2b5dd90cef21358c37468f5aea865e0ab705a2`
 - Pull request: https://github.com/RittickDatta/rittick-sdk/pull/2
-- PR status at inspection: Open.
+- PR status: Merged.
+- Merge timestamp: 2026-11-23T06:12:28Z.
 
-GitHub comparison confirmed two commits ahead of main, zero commits behind, and nine changed files before this documentation checkpoint.
+GitHub confirmed that both implementation commits and the verification documentation commit were incorporated into main.
+
+Before verification documentation, the feature branch was two commits ahead of main, zero commits behind, with nine changed files.
 
 ### Implemented scope
 
@@ -193,7 +199,7 @@ GitHub comparison confirmed two commits ahead of main, zero commits behind, and 
 - `scripts/check-ui-package.mjs`
 - Removed: `packages/ui/src/typecheck.ts`
 
-This verification checkpoint additionally updates:
+Verification and completion documentation:
 
 - `PROGRESS.md`
 - `DEVELOPMENT_PROGRESS.md`
@@ -259,15 +265,15 @@ The isolated consumer installation reported zero known vulnerabilities at the ti
 - [x] Package validation passed.
 - [x] npm tarball generated and inspected.
 - [x] Packed ESM consumer import passed.
-- [x] Git diff reviewed.
+- [x] Git diff validation passed.
 - [x] Working tree clean at validation.
 - [x] Implementation committed and pushed.
 - [x] GitHub implementation verified.
 - [x] Pull request created.
-- [ ] Verification documentation committed and pushed.
-- [ ] Pull request merged into main.
-- [ ] Merged revision verified.
-- [ ] Completion status reconciled.
+- [x] Verification documentation committed and pushed.
+- [x] Pull request merged into main.
+- [x] Merge commit and merged documentation verified.
+- [x] Final completion documentation prepared.
 
 ### Test limitations
 
@@ -277,28 +283,33 @@ The packed consumer test establishes basic ESM installation and import compatibi
 
 Node.js 22 validation and independent GitHub Actions CI remain unverified.
 
+Local validation used npm 12.2.0, while the declared package manager baseline remains npm 10.9.2.
+
 No package is approved for publication.
 
 ### Completion assessment
 
 All current story-level technical acceptance checks passed.
 
-UI-003 remains Verified until the documentation and merge handoff are complete.
+PR #2 was merged successfully into main on 2026-11-23.
+
+The UI-002 documentation duplicates were removed in the UI-003 verification checkpoint.
+
+The final completion-documentation commit SHA will be recorded in a subsequent checkpoint after this update is committed.
+
+**Final lifecycle status: Completed.**
 
 ---
 
 ## Implementation boundaries
 
-Completed foundation:
+The completed foundation provides:
 
 - npm monorepo initialization.
 - Private UI workspace package.
 - Strict TypeScript configuration.
 - Workspace validation.
 - UI typechecking.
-
-Implemented and verified on the UI-003 feature branch:
-
 - ESM library build.
 - Explicit package exports.
 - Declaration and source map generation.
@@ -321,6 +332,6 @@ Not yet implemented:
 
 **UI-004 — Configure ESLint and Prettier**
 
-Begin after UI-003 completion is confirmed.
+Begin from the latest main after the UI-003 completion documentation is committed.
 
 See `DEVELOPMENT_PROGRESS.md` for detailed recovery instructions.

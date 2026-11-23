@@ -39,8 +39,14 @@ Status: Completed.
 
 ### Library build and package exports — UI-003
 
-Status: Implemented and technically verified on the
-feature branch; merge into main pending.
+Status: Completed.
+
+Implemented, technically verified, and merged into main
+on 2026-11-23 through pull request #2.
+
+Merge commit:
+
+`ec2b5dd90cef21358c37468f5aea865e0ab705a2`
 
 #### Library build
 
@@ -112,7 +118,7 @@ Implemented validation commands:
 - `npm run build`
 - `npm run check:package`
 
-Local validation on Node.js 24.16.0 passed.
+Local validation on Node.js 24.16.0 passed before merge.
 
 The actual npm tarball was generated and inspected.
 
@@ -121,7 +127,7 @@ consumer outside the source workspace.
 
 Native Node ESM import passed.
 
-The current packed artifact contains:
+The validated packed artifact contains:
 
 - `package.json`
 - `dist/index.js`
