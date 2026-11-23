@@ -13,7 +13,9 @@
   ],
   "scripts": {
     "check:workspace": "node scripts/check-workspace.mjs",
-    "typecheck": "tsc --project packages/ui/tsconfig.json --noEmit"
+    "typecheck": "tsc --project packages/ui/tsconfig.json --noEmit",
+    "build": "npm run build --workspace=@rittick/ui",
+    "check:package": "node scripts/check-ui-package.mjs"
   },
   "devDependencies": {
     "typescript": "5.9.3"

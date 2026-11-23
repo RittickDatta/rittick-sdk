@@ -3,6 +3,7 @@ dist/
 coverage/
 .storybook-out/
 *.tsbuildinfo
+*.tgz
 .env
 .env.*
 !.env.example

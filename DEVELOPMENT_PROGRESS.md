@@ -1,3 +1,4 @@
+
 # Rittick development recovery checkpoint
 
 ## Project baseline
@@ -6,16 +7,18 @@
 - Default branch: `main`
 - Master roadmap: **195 original stories**
 - Completed: **2**
-- Verified (awaiting completion): **0**
+- Verified (awaiting completion): **1**
 - In progress: **0**
 - Blocked: **0**
-- Planned: **193**
-- Planned: **193**
+- Planned: **192**
 - Accepted ADRs: ADR-001 through ADR-011.
 - Last completed story: `UI-002`
-- Next eligible candidate: `UI-003`
+- Current story: `UI-003`
+- Next candidate: `UI-004`
 
-## UI-001 — Initialize Repository and npm Project
+---
+
+## UI-001 — Initialize repository and npm project
 
 **Status: Completed**
 
@@ -23,34 +26,24 @@
 
 ### Git evidence
 
-Implementation commit:
-`a95ff8987d78ce9bd5889f0a8ab1420bb14123b4`
-
-Initial documentation checkpoint:
-`db5daa7c592a42849906c9fd238258e09f7b18c9`
-
-Completion evidence commit:
-`9d72c82870b9f057dba42aedcffb9968ed9ab981`
-
-Final reconciliation commit:
-`cd19591b84a16f3346199bf96d5d9ba484eed0fb`
-
-Final reconciliation URL:
-https://github.com/RittickDatta/rittick-sdk/commit/cd19591b84a16f3346199bf96d5d9ba484eed0fb
+- Implementation: `a95ff8987d78ce9bd5889f0a8ab1420bb14123b4`
+- Initial documentation checkpoint: `db5daa7c592a42849906c9fd238258e09f7b18c9`
+- Completion evidence: `9d72c82870b9f057dba42aedcffb9968ed9ab981`
+- Final reconciliation: `cd19591b84a16f3346199bf96d5d9ba484eed0fb`
 
 ### Implemented scope
 
 - Private ESM npm workspace.
 - Root npm workspace configuration.
 - Root package manifest and lockfile.
-- Private `@rittick/ui` package placeholder.
+- Private `@rittick/ui` workspace placeholder.
 - Workspace validation script.
-- Architecture and progress documents.
+- Architecture and progress documentation.
 - Accepted ADR records.
 
-### Validation evidence
+### Local validation evidence
 
-User's local Git Bash checkout, 2026-11-21:
+Date: 2026-11-21.
 
 - Node.js: `v24.16.0`.
 - npm: `12.2.0`.
@@ -59,7 +52,7 @@ User's local Git Bash checkout, 2026-11-21:
 - `npm run check:workspace` — PASS.
 - Output: `UI-001 workspace checks passed`.
 
-GitHub repository contents and commits were verified.
+Repository contents and commits were verified through GitHub.
 
 GitHub Actions CI was not independently verified.
 
@@ -79,86 +72,77 @@ GitHub Actions CI was not independently verified.
 - [x] npm workspace available.
 - [x] UI package placeholder available.
 - [x] Relevant ADR-001 requirements reviewed.
-- [x] Repository and feature branch verified on GitHub.
 
 ### Git evidence
 
-Repository:
-https://github.com/RittickDatta/rittick-sdk
-
 Feature branch:
+
 `2/rittick-sdk/ui/configure-strict-typescript`
 
 Implementation commit:
-`8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8`
+
 `8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8`
 
-Implementation commit message:
+Implementation message:
+
 `chore(ui): configure strict TypeScript (UI-002)`
 
-Implementation URL:
-https://github.com/RittickDatta/rittick-sdk/commit/8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8
-
 Verification documentation commit:
+
 `3b1822692a7b2a5b2794b3527208948e0de7d7a2`
 
-Verification documentation URL:
-https://github.com/RittickDatta/rittick-sdk/commit/3b1822692a7b2a5b2794b3527208948e0de7d7a2
-
 Merge commit:
+
 `bf6fa37344fde17b276b934174e5ab3081c45b49`
 
-Merge commit URL:
-https://github.com/RittickDatta/rittick-sdk/commit/bf6fa37344fde17b276b934174e5ab3081c45b49
+Completion documentation commit:
+
+`14d12fca554600663cc9bf266b1c3b167beb2517`
+
+Conflict-resolution commit:
+
+`7ef638013086dc065025eaf11c25e9a2fddb13ae`
 
 Pull request:
+
 https://github.com/RittickDatta/rittick-sdk/pull/1
 
-The connected GitHub integration confirmed that:
-
-- The implementation commit exists.
-- The verification documentation commit exists.
-- The feature branch was merged into `main`.
-- The merged `main` branch contains the TypeScript dependency and configuration changes.
-
-The SHA of the final completion-documentation commit is not yet available and must be recorded in a subsequent checkpoint.
+The implementation, documentation, and merge were verified through GitHub.
 
 ### Files changed
 
 1. `package.json`
-   - Added exact TypeScript `5.9.3` development dependency.
-   - Added root `typecheck` script.
+   - Added exact TypeScript 5.9.3 dependency.
+   - Added root typecheck script.
 
 2. `package-lock.json`
-   - Updated npm dependency lockfile.
+   - Updated dependency lockfile.
 
 3. `tsconfig.base.json`
-   - Added shared strict TypeScript compiler defaults.
+   - Added strict shared compiler defaults.
 
 4. `packages/ui/tsconfig.json`
-   - Added UI-specific TypeScript configuration.
+   - Added UI-specific compiler configuration.
 
 5. `packages/ui/src/typecheck.ts`
    - Added temporary compilation sentinel.
 
 6. `PROGRESS.md`
-   - Added implementation, verification, and completion checkpoints.
+   - Recorded implementation and completion status.
 
 7. `DEVELOPMENT_PROGRESS.md`
-   - Added recovery and validation evidence.
+   - Recorded validation and recovery evidence.
 
 ### Architecture decisions
 
-UI-002 follows the accepted TypeScript and package architecture baseline:
-
 - TypeScript 5.8+ within major version 5.
-- Exact installed TypeScript version: `5.9.3`.
+- Exact installed version: `5.9.3`.
 - ES2022 target.
 - ESNext modules.
-- Bundler module resolution for the UI package.
-- React JSX transform configuration.
+- Bundler module resolution for UI typechecking.
+- React JSX transform.
 - Strict compiler checking.
-- No JavaScript output during typechecking.
+- No JavaScript emission during typechecking.
 
 Configured strictness includes:
 
@@ -173,184 +157,590 @@ Configured strictness includes:
 - `verbatimModuleSyntax`
 - `forceConsistentCasingInFileNames`
 
-The shared base configuration is not a final backend compilation contract.
+The shared configuration is not a final backend compilation contract.
 
 No accepted ADR amendment was required.
 
 ### Local verification evidence
 
-Date: 2026-11-21
+Date: 2026-11-21.
 
 Environment:
 
 - Git Bash / MINGW64.
-- Repository: `rittick-sdk`.
-- Feature branch: `2/rittick-sdk/ui/configure-strict-typescript`.
-- npm version observed: `12.2.0`.
-- TypeScript version confirmed by user: `5.9.3`.
+- npm: `12.2.0`.
+- TypeScript: `5.9.3`, confirmed by the user.
 
-Commands and results:
+Commands and observed results:
 
 1. `git pull`
-   - PASS.
-   - Output: `Already up to date.`
    - PASS.
    - Output: `Already up to date.`
 
 2. `npm ci`
    - PASS.
    - Output: `added 2 packages in 1s`.
-3. `npm ci`
-   - PASS.
-   - Output: `added 2 packages in 1s`.
 
-4. `npm run check:workspace`
-5. `npm run check:workspace`
+3. `npm run check:workspace`
    - PASS.
    - Output: `UI-001 workspace checks passed`.
-   - Output: `UI-001 workspace checks passed`.
 
-6. `npm run typecheck`
-7. `npm run typecheck`
+4. `npm run typecheck`
    - PASS.
    - Executed:
      `tsc --project packages/ui/tsconfig.json --noEmit`
    - No compiler errors reported.
 
-8. `git status -sb`
+5. `git status -sb`
    - Clean working tree.
-   - Feature branch tracking its remote counterpart.
+   - Feature branch tracking remote.
 
-9. `npx tsc --version`
-   - TypeScript `5.9.3`, confirmed by the user.
-   - Exact terminal output was not supplied as a screenshot.
+6. TypeScript compiler version
+   - Version `5.9.3` confirmed by user.
+   - Exact compiler-version screenshot was not supplied for UI-002.
 
-The initial mistyped `pm ci` command failed, but the corrected `npm ci` command passed.
+The initial mistyped `pm ci` command failed before the corrected `npm ci` command passed.
 
-The `npm tsc --version` command displayed npm `12.2.0`, not the compiler version. TypeScript `5.9.3` was subsequently confirmed separately.
+The command `npm tsc --version` reported npm 12.2.0, not the compiler version. TypeScript was subsequently confirmed separately.
 
 ### GitHub verification
 
-The connected GitHub integration verified:
+The implementation and verification documentation commits were verified.
 
-- Implementation commit:
-  `8f48a7122a2ea409cc1e0ae0e98b92ba241f45a8`
-- Verification documentation commit:
-  `3b1822692a7b2a5b2794b3527208948e0de7d7a2`
-- Pull request #1 merge commit:
-  `bf6fa37344fde17b276b934174e5ab3081c45b49`
+PR #1 was merged into main.
 
-After the merge, the feature branch was zero commits ahead and one commit behind `main`, consistent with the completed merge.
+At the initial merge inspection, the feature branch was zero commits ahead and one commit behind main.
 
-GitHub Actions CI was not independently verified.
+Completion documentation was subsequently pushed.
+
+A documentation merge conflict was resolved and pushed.
 
 ### Acceptance checklist
 
-- [x] UI-001 prerequisite completed.
+- [x] Prerequisites verified.
 - [x] TypeScript dependency installed and pinned.
-- [x] TypeScript version meets ADR-001.
-- [x] Shared strict compiler configuration created.
-- [x] UI-specific compiler configuration created.
+- [x] Compiler version requirement satisfied.
+- [x] Shared strict configuration created.
+- [x] UI-specific configuration created.
 - [x] Compilation sentinel created.
 - [x] Root typecheck script added.
-- [x] Dependency lockfile updated.
-- [x] `npm ci` passed.
-- [x] Existing workspace check passed.
-- [x] TypeScript version confirmed.
+- [x] Lockfile updated.
+- [x] Clean installation passed.
+- [x] Workspace check passed.
+- [x] Compiler version confirmed.
 - [x] Strict typecheck passed.
-- [x] Implementation committed.
-- [x] Implementation pushed to feature branch.
-- [x] Implementation commit verified.
-- [x] Verification documentation committed.
-- [x] Verification documentation pushed.
-- [x] Pull request merged into `main`.
+- [x] Implementation committed and pushed.
+- [x] GitHub implementation verified.
+- [x] Verification documentation committed and pushed.
+- [x] Pull request merged.
 - [x] Merged revision inspected.
-- [x] UI-002 completion documentation prepared.
+- [x] Completion documentation reconciled.
+- [x] Documentation conflict resolved.
 
 ### Test limitations
 
-The TypeScript sentinel currently contains an empty module.
+UI-002 used an empty TypeScript module.
 
-The successful typecheck confirms that the compiler configuration and command work, but it does not validate real React components or generated public declarations.
-
-No component tests, browser tests, build tests, or packed-consumer tests were introduced by UI-002.
+Actual React components, public declarations, browser tests, build tests, and packed-consumer tests were outside UI-002 scope.
 
 GitHub Actions CI was not independently verified.
 
+### Documentation reconciliation
+
+The UI-002 merge-conflict resolution introduced duplicate entries in both progress documents.
+
+The UI-003 verification checkpoint removes those duplicate entries while retaining historical evidence.
+
 ### Risks and blockers
 
-No known TypeScript configuration blocker.
-
-No outstanding implementation or merge blocker.
-
-The final completion-documentation reconciliation is being recorded in this update.
-
-### Current lifecycle decision
-
-The required TypeScript configuration was implemented, validated locally, committed, and merged into `main`.
+No outstanding UI-002 implementation or merge blocker.
 
 **Final lifecycle status: Completed.**
 
-UI-002 contributes one completed original story to the 195-story roadmap.
+---
 
-Total completed original stories: **2**.
+## UI-003 — Configure library build and package exports
+
+**Status: Verified — awaiting merge**
+
+**Verification date:** 2026-11-23
+
+### Prerequisites
+
+- [x] UI-001 completed.
+- [x] UI-002 completed.
+- [x] Original UI-003 roadmap definition confirmed.
+- [x] ADR-001 reviewed.
+- [x] ADR-009 reviewed.
+- [x] Existing workspace configuration inspected.
+- [x] Existing TypeScript configuration inspected.
+
+### Git evidence
+
+Repository:
+
+https://github.com/RittickDatta/rittick-sdk
+
+Feature branch:
+
+`3/rittick-sdk/ui/configure-library-build-and-package-exports`
+
+Starting main revision:
+
+`7ef638013086dc065025eaf11c25e9a2fddb13ae`
+
+Implementation commit:
+
+`68c5440174edebc28bedc04d1ce27d203240b4bd`
+
+Implementation message:
+
+`build(ui): configure library build and package exports (UI-003)`
+
+Implementation Part 2:
+
+`409f977e053832ef03dfa0a11fb55d0ee22661f2`
+
+Implementation Part 2 message:
+
+`build(ui): configure library build and package exports (UI-003) - Part 2`
+
+Validated local HEAD:
+
+`409f977e053832ef03dfa0a11fb55d0ee22661f2`
+
+Pull request:
+
+https://github.com/RittickDatta/rittick-sdk/pull/2
+
+GitHub inspection confirmed:
+
+- Both implementation commits exist.
+- Pull request #2 is open.
+- Target branch is main.
+- Feature branch was two commits ahead.
+- Feature branch was zero commits behind.
+- Nine files changed before verification documentation.
+
+The verification documentation commit and merge SHA are not yet available.
+
+### Architecture decisions
+
+UI-003 uses the existing TypeScript compiler instead of introducing a separate JavaScript bundler.
+
+Build configuration:
+
+- ESM-only distribution.
+- NodeNext module resolution.
+- Strict compiler options inherited from UI-002.
+- ES2022 target.
+- JavaScript emission enabled for builds.
+- Declaration generation enabled.
+- Source map generation enabled.
+- Inline source content in source maps.
+- No emission on compilation errors.
+- Clean output directory before every build.
+
+Package configuration:
+
+- Public root import: `@rittick/ui`.
+- Runtime entry: `dist/index.js`.
+- Declaration entry: `dist/index.d.ts`.
+- Explicit `types` and `import` export conditions.
+- No wildcard exports.
+- No CommonJS distribution.
+- React and ReactDOM 19.x required peers.
+- CSS files preserved through side-effect metadata.
+- npm file allowlist restricted to `dist`.
+- `private: true` retained.
+- `prepack` executes the library build.
+
+The public entry point is intentionally empty.
+
+The stylesheet export will be introduced when the compiled stylesheet is implemented.
+
+No accepted ADR amendment was required.
+
+### Files changed
+
+1. `package.json`
+   - Added root build script.
+   - Added root package validation script.
+
+2. `package-lock.json`
+   - Recorded React and ReactDOM peer resolution.
+   - Preserved TypeScript 5.9.3.
+
+3. `packages/ui/package.json`
+   - Added package entry points.
+   - Added explicit conditional exports.
+   - Added distribution allowlist.
+   - Added CSS side-effect metadata.
+   - Added clean, build, and prepack scripts.
+   - Added React 19 peer dependencies.
+
+4. `packages/ui/tsconfig.build.json`
+   - Added library build configuration.
+
+5. `packages/ui/src/index.ts`
+   - Added public package entry point.
+   - Current content is an empty module.
+
+6. `packages/ui/src/typecheck.ts`
+   - Removed obsolete UI-002 sentinel.
+
+7. `scripts/check-ui-package.mjs`
+   - Added package metadata assertions.
+   - Added distribution file assertions.
+   - Added source map assertions.
+   - Added public ESM import validation.
+   - Added unsupported deep-import rejection check.
+
+8. `.gitignore`
+   - Updated generated-artifact exclusions.
+
+9. `ARCHITECTURE.md`
+   - Reconciled UI-002 implementation.
+   - Documented UI-003 architecture.
+
+Verification checkpoint additionally updates:
+
+- `PROGRESS.md`
+- `DEVELOPMENT_PROGRESS.md`
+- `ARCHITECTURE.md`
+
+### Dependency evidence
+
+Versions inspected in the committed lockfile:
+
+| Dependency | Version |
+|---|---|
+| TypeScript | 5.9.3 |
+| React | 19.3.1 |
+| ReactDOM | 19.3.1 |
+| Scheduler | 0.28.0 |
+
+Declared React and ReactDOM peer ranges:
+
+`^19.0.0`
+
+### Local validation environment
+
+Date: 2026-11-23.
+
+- Operating environment: Windows Git Bash / MINGW64.
+- Node.js: `v24.16.0`.
+- npm: `12.2.0`.
+- TypeScript: `5.9.3`.
+- Feature branch: `3/rittick-sdk/ui/configure-library-build-and-package-exports`.
+- Validated HEAD: `409f977e053832ef03dfa0a11fb55d0ee22661f2`.
+
+### Commands and observed results
+
+1. `node --version`
+   - Output: `v24.16.0`.
+
+2. `npm --version`
+   - Output: `12.2.0`.
+
+3. `npm ci`
+   - PASS.
+   - Output: `added 5 packages in 1s`.
+
+4. `npx tsc --version`
+   - PASS.
+   - Output: `Version 5.9.3`.
+
+5. `npm run check:workspace`
+   - PASS.
+   - Output: `UI-001 workspace checks passed`.
+
+6. `npm run typecheck`
+   - PASS.
+   - No TypeScript errors reported.
+
+7. `npm run build`
+   - PASS.
+   - Cleaned distribution directory.
+   - Executed TypeScript library build.
+
+8. `npm run check:package`
+   - PASS.
+   - Output: `UI-003 package checks passed`.
+
+9. `npm pack --workspace=@rittick/ui`
+   - PASS.
+   - Executed prepack build.
+   - Generated `rittick-ui-0.0.0.tgz`.
+
+10. `tar -tzf rittick-ui-0.0.0.tgz`
+    - PASS.
+    - Confirmed four expected files.
+
+11. Isolated packed consumer test
+    - PASS.
+    - Created temporary consumer outside workspace.
+    - Initialized npm project.
+    - Installed actual UI tarball.
+    - Executed native Node ESM import.
+    - Output: `Packed ESM import passed []`.
+    - npm reported 4 packages added.
+    - npm reported 5 packages audited.
+    - npm reported zero known vulnerabilities.
+
+12. `git diff --check`
+    - PASS.
+    - No whitespace errors reported.
+
+13. `git status -sb`
+    - Clean working tree.
+    - Feature branch tracking remote.
+    - No ahead or behind indicator.
+
+14. `git rev-parse HEAD`
+    - Output:
+      `409f977e053832ef03dfa0a11fb55d0ee22661f2`
+    - Matches inspected GitHub implementation HEAD.
+
+The initial `npx --version` command reported the npm/npx version. The correct TypeScript compiler-version command was subsequently executed and verified.
+
+### Packed artifact evidence
+
+Package name:
+
+`@rittick/ui`
+
+Package version:
+
+`0.0.0`
+
+Tarball:
+
+`rittick-ui-0.0.0.tgz`
+
+Packed size:
+
+659 bytes.
+
+Unpacked size:
+
+959 bytes.
+
+Total files:
+
+4.
+
+SHA-1 shasum reported by npm:
+
+`a13f283606e4a53c01425aa74a7b4f8c2c71bbe6`
+
+Artifact contents:
+
+| File | Size |
+|---|---|
+| `package/dist/index.d.ts` | 11 bytes |
+| `package/dist/index.js` | 44 bytes |
+| `package/dist/index.js.map` | 152 bytes |
+| `package/package.json` | 752 bytes |
+
+The tarball contained no unexpected standalone source files, environment files, unrelated workspace files, or development scripts.
+
+Source maps intentionally include inline source content.
+
+The package remains private and is not approved for publication.
+
+### Acceptance checklist
+
+- [x] Original story scope confirmed.
+- [x] Prerequisites verified.
+- [x] Relevant ADRs reviewed.
+- [x] ESM library build configured.
+- [x] JavaScript distribution generated.
+- [x] TypeScript declarations generated.
+- [x] Source maps generated.
+- [x] Explicit package exports configured.
+- [x] React peer dependencies configured.
+- [x] Clean npm installation passed.
+- [x] Compiler version confirmed.
+- [x] Workspace validation passed.
+- [x] Strict typechecking passed.
+- [x] Library build passed.
+- [x] Package validation passed.
+- [x] Actual npm tarball generated.
+- [x] Tarball contents inspected.
+- [x] Isolated consumer installation passed.
+- [x] Packed ESM import passed.
+- [x] Unsupported deep imports rejected by package check.
+- [x] Git diff check passed.
+- [x] Working tree clean at validation.
+- [x] Implementation committed and pushed.
+- [x] GitHub source review completed.
+- [x] Local HEAD matches GitHub implementation HEAD.
+- [x] Pull request created.
+- [x] Verification documentation prepared.
+- [ ] Verification documentation committed and pushed.
+- [ ] Pull request merged into main.
+- [ ] Merged revision verified.
+- [ ] Final completion status reconciled.
+
+### Test limitations
+
+- Public API is intentionally empty.
+- No actual React components are tested.
+- Full browser and SSR compatibility is not established.
+- Packed TypeScript declaration resolution in consumer projects is not yet tested.
+- Full Node.js 22 and 24 compatibility matrix is not established.
+- Node.js 22 execution was not independently verified for UI-003.
+- GitHub Actions CI was not independently verified.
+- GitHub commit status inspection returned no individual statuses.
+- The isolated npm audit result is not a comprehensive security assessment.
+- The package check currently expects the exact UI-003 bootstrap files and empty public API. It must evolve when new exports are introduced.
+
+Full packed-artifact consumer validation remains a mandatory release gate under ADR-001, ADR-009, and ADR-010.
+
+### Toolchain observation
+
+The repository declares npm 10.9.2 as its package manager baseline.
+
+The user's local environment uses npm 12.2.0.
+
+Local validation passed, but this difference must be considered when establishing reproducible CI and release builds.
+
+No package manager baseline change has been approved.
+
+### Risks and blockers
+
+No known UI-003 implementation or local validation blocker.
+
+Remaining completion dependencies:
+
+- Commit and push verification documentation.
+- Merge PR #2.
+- Verify merged revision.
+- Reconcile completion status.
+
+### Lifecycle decision
+
+UI-003 has passed the current story-level technical acceptance checks.
+
+**Lifecycle status: Verified.**
+
+Do not count UI-003 as Completed until the repository handoff is confirmed.
 
 ---
 
-### Recovery instructions
+## Recovery instructions
+
+### Resume UI-003 before merge
 
 From an existing local checkout:
 
 ```bash
-git switch main
-git pull
+git switch 3/rittick-sdk/ui/configure-library-build-and-package-exports
+git pull --ff-only
 git status -sb
-git log -3 --oneline
+git log -5 --oneline
 
 npm ci
-npm run check:workspace
 npx tsc --version
+npm run check:workspace
 npm run typecheck
+npm run build
+npm run check:package
+npm pack --workspace=@rittick/ui
+tar -tzf rittick-ui-0.0.0.tgz
+git diff --check
 ```
 
-Expected TypeScript version: `5.9.3`.
+Expected TypeScript version:
 
-The above recovery commands are instructions, not a claim that validation has been rerun after the merge.
+`5.9.3`
 
-Review:
+Expected package validation output:
 
-- `ARCHITECTURE.md`
-- `PROGRESS.md`
-- `DEVELOPMENT_PROGRESS.md`
-- Relevant accepted ADRs
-- Latest GitHub commits and pull requests
+`UI-003 package checks passed`
 
-If local validation fails, record the failure and investigate before proceeding.
+### Repeat isolated packed consumer validation
 
-## Next eligible story
+Run from the repository root using Git Bash:
 
-**UI-003**
-**UI-003**
+```bash
+(
+  set -e
 
-Before starting:
+  TARBALL="$PWD/rittick-ui-0.0.0.tgz"
+  CONSUMER_DIR="$(mktemp -d)"
 
-1. Verify UI-003's exact original roadmap title and scope.
-2. Confirm its prerequisites are completed.
-3. Inspect the current repository.
-4. Review applicable accepted ADRs.
-5. Implement only the approved story scope.
-6. Run the relevant validation commands.
-7. Record actual Git and test evidence.
-8. Provide complete updated contents of both progress documents.
+  trap 'rm -rf "$CONSUMER_DIR"' EXIT
+
+  cd "$CONSUMER_DIR"
+
+  npm init -y
+  npm install "$TARBALL"
+
+  node --input-type=module -e \
+    "import * as ui from '@rittick/ui'; console.log('Packed ESM import passed', Object.keys(ui));"
+)
+```
+
+Expected output:
+
+`Packed ESM import passed []`
+
+### Resume after merge
+
+```bash
+git switch main
+git pull --ff-only origin main
+git status -sb
+git log -5 --oneline
+```
+
+Inspect the actual merged revision before updating completion status.
+
+Recovery commands are instructions, not claims of additional execution.
+
+---
+
+## Story branch and documentation workflow
+
+For every new story:
+
+1. Synchronize local main with origin/main.
+2. Create a dedicated feature branch.
+3. Implement only the approved story scope.
+4. Execute relevant acceptance tests.
+5. Commit and push implementation.
+6. Verify implementation through GitHub.
+7. Update progress and architecture documentation on the same feature branch.
+8. Review the documentation diff.
+9. Synchronize with main if it has changed.
+10. Merge through a pull request.
+11. Verify the merged revision.
+12. Reconcile final completion status.
+
+Use the latest repository documentation as the source of truth.
+
+Preserve historical evidence and avoid duplicate sections.
+
+Never resolve documentation conflicts by blindly retaining both conflicting copies.
+
+## Next story
+
+**UI-004 — Configure ESLint and Prettier**
+
+Begin after UI-003 completion is confirmed.
+
+Review the original roadmap, accepted ADRs, and current repository configuration before implementation.
 
 ## Mandatory checkpoint for every future story
 
-For every story, record:
+Record:
 
 - Story ID and lifecycle status.
 - Verified prerequisites.
 - Repository and branch.
-- Actual commit SHA.
+- Actual implementation commit SHA.
 - Files added, modified, or removed.
 - Commands actually executed.
 - Test outcomes and evidence.
@@ -361,14 +751,15 @@ For every story, record:
 - Recovery and resume commands.
 - Next eligible story.
 
-After every story, provide the complete copy-ready contents of:
+After every story, provide complete copy-ready contents of:
 
 1. `PROGRESS.md`
 2. `DEVELOPMENT_PROGRESS.md`
+
+Update `ARCHITECTURE.md` whenever implemented architecture changes.
 
 Only completed original story IDs count toward the 195-story roadmap.
 
 Never invent commits, tests, results, or implemented files.
 
-Never store secrets or credentials.
 Never store secrets or credentials.
