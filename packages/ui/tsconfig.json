@@ -1,14 +1,10 @@
-
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "./src",
     "tsBuildInfoFile": "../../node_modules/.cache/tsconfig.ui.tsbuildinfo"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": [
     "dist",
     "node_modules",

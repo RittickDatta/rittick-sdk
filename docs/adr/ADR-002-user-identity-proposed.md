@@ -6,9 +6,11 @@
 - **Predecessor:** ADR-001 (Accepted)
 
 ## Context
+
 Authentication supports email-only, phone-only, either, or both registration, mandatory verification, password and passwordless OTP login, secure recovery, and organization-scoped RBAC. Identifiers must not be conflated with immutable user IDs.
 
 ## Confirmed decisions
+
 1. A user has a stable opaque internal ID and at most one email and one phone identity in v1. Identity verification, credentials, sessions, and role assignments are distinct records or logically distinct aggregates.
 2. Identifier uniqueness is enforced within an application authentication realm, not across unrelated applications. An RBAC organization is not automatically a separate authentication realm.
 3. Email: trim surrounding whitespace; normalize the domain conservatively (IDNA/ASCII and lowercase); preserve local-part case; do not remove dots, plus tags, or apply provider-specific alias rules. Persist a canonical comparison key and display representation. The application must use the same comparison semantics in all database adapters.
@@ -21,6 +23,7 @@ Authentication supports email-only, phone-only, either, or both registration, ma
 10. Public-facing responses should resist account enumeration. Database uniqueness and security checks remain authoritative server-side.
 
 ## Security-critical questions still open
+
 1. **Pending-claim contention and denial of registration:** Can multiple pending claims coexist for an identifier, or is one pending claim exclusive? What prevents indefinite reservation through retries? Proposed: bounded claims that never establish permanent ownership, abuse-protected retries, atomic first verified claimant, and no renewal-based indefinite lockout.
 2. **Activation policy for `both` and `either`:** Is `both` activated only after both identifiers verify? Does an unverified optional second identifier prevent activation under `either`? Proposed: `both` requires both; `either` requires one verified permitted identifier, while unverified secondary identifiers grant no login or recovery rights.
 3. **Replacement races:** How are concurrent pending replacement and registration claims arbitrated? Proposed: verify new identifier then atomically claim it, retain old identity until commit, fail safely on uniqueness conflict.
@@ -28,6 +31,7 @@ Authentication supports email-only, phone-only, either, or both registration, ma
 5. **Restricted-state semantics:** Which remediation endpoints remain accessible? Proposed: default deny normal login and protected resources; explicitly allow only secure remediation paths.
 
 ## Further design notes (not blocking this ADR if covered by later ADRs)
+
 - OTP entropy, attempt limits, and rate-limit thresholds belong to ADR-006/007.
 - Session revocation and reauthentication assurance belong to ADR-003.
 - Storage transaction guarantees and adapter concurrency behavior belong to ADR-004.
@@ -35,6 +39,7 @@ Authentication supports email-only, phone-only, either, or both registration, ma
 - Recovery for lost identifiers belongs to ADR-006.
 
 ## Required validation
+
 - Verify uniqueness and canonicalization equivalence across Prisma/Postgres and MongoDB adapters, including concurrency.
 - Test pending registration expiry, repeated reservation abuse, and competing verification claims.
 - Test all four registration policies and activation conditions.
@@ -43,4 +48,5 @@ Authentication supports email-only, phone-only, either, or both registration, ma
 - Test account enumeration resistance and lack of automatic account merging.
 
 ## Decision status
+
 **Not Accepted.** The confirmed choices are recorded; the five security-critical questions above require explicit approval before promotion to Accepted.

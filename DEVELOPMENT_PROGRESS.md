@@ -1,4 +1,3 @@
-
 # Rittick development recovery checkpoint
 
 ## Project baseline
@@ -448,11 +447,11 @@ Verification and completion checkpoints additionally update:
 Versions inspected in the committed lockfile:
 
 | Dependency | Version |
-|---|---|
-| TypeScript | 5.9.3 |
-| React | 19.3.1 |
-| ReactDOM | 19.3.1 |
-| Scheduler | 0.28.0 |
+| ---------- | ------- |
+| TypeScript | 5.9.3   |
+| React      | 19.3.1  |
+| ReactDOM   | 19.3.1  |
+| Scheduler  | 0.28.0  |
 
 Declared React and ReactDOM peer ranges:
 
@@ -570,12 +569,12 @@ SHA-1 shasum reported by npm:
 
 Artifact contents:
 
-| File | Size |
-|---|---|
-| `package/dist/index.d.ts` | 11 bytes |
-| `package/dist/index.js` | 44 bytes |
+| File                        | Size      |
+| --------------------------- | --------- |
+| `package/dist/index.d.ts`   | 11 bytes  |
+| `package/dist/index.js`     | 44 bytes  |
 | `package/dist/index.js.map` | 152 bytes |
-| `package/package.json` | 752 bytes |
+| `package/package.json`      | 752 bytes |
 
 The tarball contained no unexpected standalone source files, environment files, unrelated workspace files, or development scripts.
 

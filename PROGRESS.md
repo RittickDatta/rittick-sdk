@@ -1,4 +1,3 @@
-
 # Rittick roadmap progress
 
 ## Roadmap baseline
@@ -22,13 +21,13 @@
 
 ## Story summary
 
-| Story | Description | Status |
-|---|---|---|
-| UI-001 | Initialize repository and npm project | Completed |
-| UI-002 | Configure strict TypeScript | Completed |
+| Story  | Description                                 | Status    |
+| ------ | ------------------------------------------- | --------- |
+| UI-001 | Initialize repository and npm project       | Completed |
+| UI-002 | Configure strict TypeScript                 | Completed |
 | UI-003 | Configure library build and package exports | Completed |
-| UI-004 | Configure ESLint and Prettier | Planned |
-| UI-005 | Configure Vitest and React Testing Library | Planned |
+| UI-004 | Configure ESLint and Prettier               | Planned   |
+| UI-005 | Configure Vitest and React Testing Library  | Planned   |
 
 ---
 

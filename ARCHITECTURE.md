@@ -1,4 +1,3 @@
-
 # Rittick SDK architecture
 
 ## Architecture governance
@@ -47,6 +46,10 @@ on 2026-11-23 through pull request #2.
 Merge commit:
 
 `ec2b5dd90cef21358c37468f5aea865e0ab705a2`
+
+Final completion documentation:
+
+`deb40ab9fe76c377e0920259884bf71fb80db7b5`
 
 #### Library build
 
@@ -144,6 +147,74 @@ Full React, SSR, browser, TypeScript consumer, and
 Node.js compatibility-matrix validation remain
 mandatory future release gates.
 
+## UI-004 implementation checkpoint
+
+Status: Implementation pending verification.
+
+### Code quality tooling
+
+UI-004 introduces shared repository-level development
+tooling for JavaScript, TypeScript, and React source code.
+
+Configuration files:
+
+- `eslint.config.mjs`
+- `.prettierrc.json`
+- `.prettierignore`
+- `.editorconfig`
+
+Tooling architecture:
+
+- ESLint 9 flat configuration.
+- Recommended JavaScript linting rules.
+- Recommended TypeScript linting rules.
+- React JSX and Hooks validation.
+- Explicit Node.js globals for development tooling.
+- Browser globals scoped to UI source files.
+- Prettier 3 formatting.
+- ESLint and Prettier compatibility configuration.
+- Generated-artifact exclusions.
+- Exact development dependency versions.
+- Shared editor formatting conventions.
+
+Linting and formatting are separate responsibilities.
+
+Type-aware ESLint rules are not enabled at this stage.
+
+Strict TypeScript compilation remains a separate
+mandatory validation step.
+
+Future authentication packages will receive their own
+environment-specific linting configuration.
+
+### Formatting conventions
+
+- Two-space indentation.
+- Double quotes.
+- Semicolons.
+- Trailing commas where supported.
+- Maximum preferred line width of 100 characters.
+- LF line endings.
+- Parenthesized arrow function parameters.
+
+Generated artifacts, npm lockfiles, and environment
+files are excluded from Prettier formatting.
+
+### Development commands
+
+- `npm run lint`
+- `npm run lint:fix`
+- `npm run format`
+- `npm run format:check`
+
+Lint validation treats warnings as failures.
+
+The new tooling remains a root-level development
+dependency and does not change the UI runtime API.
+
+Implementation and validation evidence will be recorded
+in `DEVELOPMENT_PROGRESS.md`.
+
 ## Toolchain baseline
 
 - Supported Node.js versions: 22.x and 24.x.
@@ -162,7 +233,6 @@ the approved toolchain.
 
 ### Development tooling
 
-- ESLint and Prettier.
 - Vitest and React Testing Library.
 - Storybook.
 - Automated accessibility testing.
