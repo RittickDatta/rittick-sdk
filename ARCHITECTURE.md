@@ -16,6 +16,8 @@ The original 195-story roadmap remains unchanged.
 
 ### Repository foundation — UI-001
 
+Status: Completed.
+
 - Private ESM npm workspace root.
 - npm workspaces under `packages/*`.
 - Private `@rittick/ui` workspace package.
@@ -25,6 +27,8 @@ The original 195-story roadmap remains unchanged.
 
 ### TypeScript foundation — UI-002
 
+Status: Completed.
+
 - TypeScript 5.9.3 pinned as a development dependency.
 - Shared strict TypeScript configuration.
 - UI-specific TypeScript configuration.
@@ -33,27 +37,35 @@ The original 195-story roadmap remains unchanged.
 - Bundler-oriented UI typechecking.
 - Root typecheck command.
 
-## UI-003 implementation checkpoint
+### Library build and package exports — UI-003
 
-Status: Implementation pending verification.
+Status: Implemented and technically verified on the
+feature branch; merge into main pending.
 
-### Library build
+#### Library build
 
-The proposed UI-003 build uses the existing TypeScript
-compiler to generate ESM JavaScript, TypeScript
-declarations, and JavaScript source maps.
+The library uses the existing TypeScript compiler to
+generate ESM JavaScript, TypeScript declarations, and
+JavaScript source maps.
 
 Build configuration:
 
 - `packages/ui/tsconfig.build.json`
 - NodeNext module and module resolution settings.
-- Strict compiler options inherited from the UI
-  TypeScript configuration.
+- Strict compiler options inherited from UI-002.
 - Build output under `packages/ui/dist/`.
-- Clean distribution directory before each build.
+- Clean distribution directory before every build.
 - No emission when compilation errors occur.
+- Declaration generation.
+- Source maps with inline source content.
 
-### Package entry point
+The build is invoked from the repository root:
+
+`npm run build`
+
+The package also builds automatically before npm packing.
+
+#### Package entry point
 
 Source entry point:
 
@@ -63,42 +75,92 @@ Distribution entry points:
 
 - `dist/index.js`
 - `dist/index.d.ts`
+- `dist/index.js.map`
 
-The public root export is `@rittick/ui`.
+The public root export is:
 
-The initial entry point is intentionally empty.
-Public components and utilities will be added through
-their original implementation stories.
+`@rittick/ui`
 
-### Package boundaries
+The current entry point is intentionally empty.
+
+Public components and utilities will be introduced
+through their original implementation stories.
+
+#### Package boundaries
 
 - ESM-only distribution.
 - Explicit conditional exports.
+- Matching JavaScript and declaration entry points.
 - No CommonJS distribution.
 - No wildcard exports.
 - No supported private deep imports.
-- React and ReactDOM 19.x declared as required peers.
+- React and ReactDOM 19.x required peers.
 - No dependency on `@rittick/auth`.
 - Distribution files controlled through an npm
   package allowlist.
-- Publishing disabled while the package is private.
+- CSS side-effect metadata configured.
+- Publishing disabled through `private: true`.
 
-### Validation
+The stylesheet export is not yet implemented.
 
-The proposed validation commands are:
+#### Validation
+
+Implemented validation commands:
 
 - `npm run check:workspace`
 - `npm run typecheck`
 - `npm run build`
 - `npm run check:package`
 
-Packed-artifact validation is required before
-publishing any release.
+Local validation on Node.js 24.16.0 passed.
 
-UI-003 validation evidence will be recorded in
-`DEVELOPMENT_PROGRESS.md`.
+The actual npm tarball was generated and inspected.
+
+The tarball was successfully installed in an isolated
+consumer outside the source workspace.
+
+Native Node ESM import passed.
+
+The current packed artifact contains:
+
+- `package.json`
+- `dist/index.js`
+- `dist/index.d.ts`
+- `dist/index.js.map`
+
+The current package validation script is specific to
+the bootstrap public API and distribution layout.
+
+It must evolve when components, utilities, and
+additional assets are introduced.
+
+Full React, SSR, browser, TypeScript consumer, and
+Node.js compatibility-matrix validation remain
+mandatory future release gates.
+
+## Toolchain baseline
+
+- Supported Node.js versions: 22.x and 24.x.
+- Declared npm package manager: 10.9.2.
+- TypeScript development version: 5.9.3.
+- React and ReactDOM peer range: 19.x.
+
+The local UI-003 validation environment used npm 12.2.0.
+
+The declared npm baseline remains unchanged.
+
+Reproducible CI and release environments must enforce
+the approved toolchain.
 
 ## Planned architecture — not implemented
+
+### Development tooling
+
+- ESLint and Prettier.
+- Vitest and React Testing Library.
+- Storybook.
+- Automated accessibility testing.
+- Browser and visual regression testing.
 
 ### UI package
 
@@ -116,9 +178,8 @@ UI-003 validation evidence will be recorded in
 - ThemeProvider and visual-style inheritance.
 - Tailwind CSS v4 build integration.
 - Compiled stylesheet at `@rittick/ui/styles.css`.
-- Component documentation and Storybook.
-- Unit, integration, browser, accessibility,
-  and visual regression tests.
+- Component documentation.
+- Full React and SSR consumer applications.
 
 ### Authentication package
 
