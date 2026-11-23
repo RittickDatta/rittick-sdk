@@ -1,0 +1,23 @@
+
+# Dependencies
+**/node_modules/
+
+# Generated output
+**/dist/
+**/coverage/
+**/.storybook-out/
+**/storybook-static/
+**/.cache/
+**/*.tsbuildinfo
+**/*.tgz
+
+# Generated lockfiles
+package-lock.json
+
+# Environment files
+**/.env
+**/.env.*
+!**/.env.example
+
+# Git internals
+.git/

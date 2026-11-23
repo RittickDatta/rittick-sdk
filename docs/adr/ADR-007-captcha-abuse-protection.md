@@ -43,15 +43,15 @@
 
 ## Failure and recovery behavior
 
-| Condition | Required result |
-|---|---|
-| Missing/expired/invalid token when required | Reject, allow controlled retry |
-| Wrong hostname/action | Reject and record security signal |
-| Token replay or concurrent reuse | Reject subsequent/replayed operation |
-| Provider timeout, outage or uncertain response | Fail closed when required; safe public error and operational alert |
-| Shared rate-limit state unavailable | Fail closed for operations relying on the required limit |
-| CAPTCHA success but independent rate limit exceeded | Deny or throttle |
-| Challenge UI inaccessible/unavailable | Accessible error/retry or separately secured alternative, never automatic bypass |
+| Condition                                           | Required result                                                                  |
+| --------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Missing/expired/invalid token when required         | Reject, allow controlled retry                                                   |
+| Wrong hostname/action                               | Reject and record security signal                                                |
+| Token replay or concurrent reuse                    | Reject subsequent/replayed operation                                             |
+| Provider timeout, outage or uncertain response      | Fail closed when required; safe public error and operational alert               |
+| Shared rate-limit state unavailable                 | Fail closed for operations relying on the required limit                         |
+| CAPTCHA success but independent rate limit exceeded | Deny or throttle                                                                 |
+| Challenge UI inaccessible/unavailable               | Accessible error/retry or separately secured alternative, never automatic bypass |
 
 ## Acceptance and test gates
 
